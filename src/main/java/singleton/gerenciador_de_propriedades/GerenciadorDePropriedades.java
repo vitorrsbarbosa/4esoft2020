@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-import singleton.propriedades.AppPropriedades;
-
 public class GerenciadorDePropriedades {
 	private static GerenciadorDePropriedades instance = new GerenciadorDePropriedades();
 	private Properties propriedades;
@@ -19,14 +17,14 @@ public class GerenciadorDePropriedades {
 	
 	//+ getValorDaPropriedade(propriedade : String) : String
 	public String getValorDaPropriedade(String propriedade) {
-		if (propriedades == null) {
-			propriedades = carregarPropriedadesDoArquivo();
+		if (this.propriedades == null) {
+			this.propriedades = carregarPropriedadesDoArquivo();
 		}
-		return propriedades.getProperty(propriedade);
+		return this.propriedades.getProperty(propriedade);
 	}
 	
 	private Properties carregarPropriedadesDoArquivo() {
-		try (InputStream input = AppPropriedades.class.getResourceAsStream("config.properties")) {
+		try (InputStream input = AppGerenciadorDePropriedades.class.getResourceAsStream("config.properties")) {
 			Properties properties = new Properties();
 			properties.load(input);
 			return properties;			

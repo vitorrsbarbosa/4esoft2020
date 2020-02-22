@@ -5,28 +5,32 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class GerenciadorDePropriedades {
-    private static GerenciadorDePropriedades gerenciadorDePropriedades;
+    private static GerenciadorDePropriedades instance = new GerenciadorDePropriedades();
+    private Properties propriedades;
 
-    public static GerenciadorDePropriedades getInstance() {
-        if (gerenciadorDePropriedades == null){
-            gerenciadorDePropriedades = new GerenciadorDePropriedades();
-        }
-        return gerenciadorDePropriedades;
+    private GerenciadorDePropriedades(){
     }
 
+    public static GerenciadorDePropriedades getInstance() {
+        return instance;
+    }
+
+
     public String getValorDaPropriedade(String propriedade) {
-        try (InputStream inputStream = GerenciadorDePropriedades.class.getResourceAsStream("config.properties")) {
+        if (this.propriedades == null || this.propriedades.isEmpty()) {
+            this.propriedades = carregaPropriedadesDoArquivo();
+        }
+        return this.propriedades.getProperty(propriedade);
+    }
+
+    private Properties carregaPropriedadesDoArquivo() {
+        try (InputStream input = AppGerenciadorDePropriedades.class.getResourceAsStream("config.properties")) {
             Properties properties = new Properties();
-
-            properties.load(inputStream);
-
-            for (Object key : properties.keySet()) {
-                System.out.println(key + " ==> " + properties.getProperty((String) key));
-            }
-
+            properties.load(input);
+            return properties;
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
-        return propriedade;
+        return  null;
     }
 }
