@@ -1,14 +1,19 @@
 package observer.cofre;
 
-import java.util.Date;
+public class CofreListenerConsole implements CofreAbertoListener, CofreFechadoListener, CofreSenhaIncorretaListener {
 
-public class CofreListenerConsole extends CofreListener {
     @Override
-    void cofreFoiAberto() {
-        System.out.println("O cofre foi aberto: " + new Date().toLocaleString());
+    public void cofreFoiAberto() {
+        System.out.println("O cofre foi aberto");
     }
+
     @Override
-    void cofreFoiFechado() {
-        System.out.println("O cofer foi fechado: " + new Date().toLocaleString());
+    public void cofreFoiFechado() {
+        System.out.println("O cofre foi fechado");
+    }
+
+    @Override
+    public void senhaIncorretaFoiInformada(int senhaInformada) {
+        System.out.println("A senha informada é Incorreta: " + senhaInformada);
     }
 }

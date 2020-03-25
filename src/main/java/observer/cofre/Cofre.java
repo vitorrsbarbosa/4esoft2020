@@ -6,7 +6,9 @@ import java.util.List;
 public class Cofre {
     boolean aberto;
     int senha;
-    private List<CofreListener> listeners = new ArrayList<>();
+    private List<CofreAbertoListener> cofreAbertoListeners = new ArrayList<>();
+    private List<CofreFechadoListener> cofreFechadoListeners = new ArrayList<>();
+    private List<CofreSenhaIncorretaListener> cofreSenhaIncorretaListeners = new ArrayList<>();
 
     public Cofre(int senha) {
         this.senha = senha;
@@ -16,21 +18,28 @@ public class Cofre {
     void abrir(int senhaInformada) {
         if(senhaInformada == this.senha) {
             this.aberto = true;
-            this.listeners.forEach(CofreListener::cofreFoiAberto);
+            this.cofreAbertoListeners.forEach(CofreAbertoListener::cofreFoiAberto);
         }
     }
 
     void fechar() {
         this.aberto = false;
-        for(CofreListener listener : this.listeners) {
-            listener.cofreFoiFechado();
-        }
+        this.cofreFechadoListeners.forEach(CofreFechadoListener::cofreFoiFechado);
     }
     boolean isAberto(){
         return this.aberto;
     }
 
     public void addListener(CofreListenerConsole listener) {
-        this.listeners.add(listener);
+        if (listener instanceof CofreAbertoListener) {
+            this.cofreAbertoListeners.add((CofreAbertoListener) listener);
+        }
+        if (listener instanceof CofreFechadoListener) {
+            this.cofreFechadoListeners.add((CofreFechadoListener) listener);
+        }
+        if (listener instanceof CofreSenhaIncorretaListener) {
+            this.cofreSenhaIncorretaListeners.add((CofreSenhaIncorretaListener) listener);
+        }
     }
 }
+
