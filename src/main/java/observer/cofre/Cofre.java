@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cofre {
-    boolean aberto;
     int senha;
+    boolean aberto;
     private List<CofreAbertoListener> cofreAbertoListeners = new ArrayList<>();
     private List<CofreFechadoListener> cofreFechadoListeners = new ArrayList<>();
     private List<CofreSenhaIncorretaListener> cofreSenhaIncorretaListeners = new ArrayList<>();
