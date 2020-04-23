@@ -1,0 +1,6 @@
+Strategy:
+Este padrão de projeto tem como finalidade fazer a conversão
+de comportamentos para objetos, permitindo que estratégias
+sejam implementadas apenas nas classes específicas onde
+terão suas próprias modificações do método, sempre retornando
+um mesmo valor.
