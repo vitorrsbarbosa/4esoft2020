@@ -1,0 +1,31 @@
+3)Padrão Builder:
+O padrão Builder é um padrão de projetos que é usado para
+encapsular a lógica de construção de um objeto, buscando
+simplificar construtores com um grande número de atributos.
+Abstrações:obrigatoriamente utiliza, pois faz o uso de
+abstrações em sua aplicão.
+Encapsulamento de atributos: obrigatoriamente utiliza utiliza
+dos atributos dos construtores.
+Encapsulamento de métodos: obrigatoriamente utiliza,
+faz o uso direto dos construtores.
+Delegação:opcionalmente utiliza.
+
+3)Padrão Builder:
+O builder permite construir objetos complexos,utilizando
+uma classe que tem a responsabilidade de criar esses objetos.
+O encapsulamento no builder é utilizado no seu construtor
+para que apenas o builder crie esses objetos.
+
+3)Padrão Builder:
+Permite que uma classe complexa, ou seja, com muitas opções
+de construtores, seja implementada sem a necessidade de
+inúmeros construtores , por meio de abstrações e encapsulamentos.
+A abstração e o encapsulamento são obrigatórios, pois os
+atributos e seus métodos devem ser conhecidos somente
+pela própria classe.
+--------------------------------------------------
+Builder:
+Este padrão de projeto é utilizado para implementar uma classe
+mais complexa de maneira que não utilize excessivamente construtores
+utilizando abstrações e encapsulamentos, assim os atributos e métodos
+são conhecidos apenas por suas próprias classes.
