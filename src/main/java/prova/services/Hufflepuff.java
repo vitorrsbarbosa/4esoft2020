@@ -23,4 +23,8 @@ public class Hufflepuff implements Casa {
 
     }
 
+    @Override
+    public void definirAnoDoEstudante() {
+
+    }
 }

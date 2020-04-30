@@ -1,5 +1,8 @@
 package prova.enumerators;
 
 public enum Casa {
-    GRYFFINDOR, HUFFLEPUFF, RAVENCLAW, SLYTHERIN
+    GRYFFINDOR,
+    HUFFLEPUFF,
+    RAVENCLAW,
+    SLYTHERIN
 }

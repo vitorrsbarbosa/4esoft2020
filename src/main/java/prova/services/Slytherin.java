@@ -23,4 +23,8 @@ public class Slytherin implements Casa {
 
     }
 
+    @Override
+    public void definirAnoDoEstudante() {
+
+    }
 }

@@ -23,4 +23,8 @@ public class Ravenclaw implements Casa {
 
     }
 
+    @Override
+    public void definirAnoDoEstudante() {
+
+    }
 }

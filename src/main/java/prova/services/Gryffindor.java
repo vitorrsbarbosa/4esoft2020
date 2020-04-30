@@ -22,4 +22,9 @@ public class Gryffindor implements Casa {
     public void definirPosicaoDoJogador() {
 
     }
+
+    @Override
+    public void definirAnoDoEstudante() {
+
+    }
 }

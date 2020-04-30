@@ -1,42 +1,70 @@
 package prova.services;
 
 import prova.enumerators.*;
-import prova.interfaces.Casa;
+import prova.enumerators.Casa;
+import prova.interfaces.*;
 
-public class Hogwarts implements prova.interfaces.Hogwarts {
+public class Hogwarts implements IHogwarts {
     private CargoEstudantil cargoEstudantil;
     private Posicao posicao;
     private Ano ano;
-    private boolean isCalouro;
 
     private Hogwarts() {}
+
+    @Override
+    public void estudar() {
+
+    }
+
+    @Override
+    public void cantarHino() {
+
+    }
+
+    @Override
+    public void nomearCargoEstudantil() {
+
+    }
+
+    @Override
+    public void definirPosicaoDoJogador() {
+
+    }
+
+    @Override
+    public void definirAnoDoEstudante() {
+
+    }
+
     public static class Builder {
         private CargoEstudantil cargoEstudantil;
         private Posicao posicao;
         private Ano ano;
         private Casa casa;
-        private boolean isCalouro;
 
-        public Builder nomearCardoDoEstudante() {
-            this.cargoEstudantil = this.cargoEstudantil;
+        public Builder nomearCargoDoEstudante(CargoEstudantil cargoEstudantil) {
+            this.cargoEstudantil = cargoEstudantil;
             return this;
         }
-        public Builder elegerPosicaoDoJogadorDeQuadribol() {
-            if (this.isCalouro) {
-                return null;
-            }
-            this.posicao = this.posicao;
+        public Builder elegerPosicaoDoJogadorDeQuadribol(Posicao posicao) {
+
+            this.posicao = posicao;
             return this;
         }
-        public Builder definirCasa() {
+        public Builder definirAnoDoEstudante(Ano ano) {
+            this.ano = ano;
+            return this;
+        }
+        public Builder definirCasa(Casa casa) {
             this.casa = casa;
             return this;
         }
         public Hogwarts builder() {
-            Hogwarts hogwarts = new Hogwarts();
-            hogwarts.cargoEstudantil = this.cargoEstudantil;
-            hogwarts.posicao = this.posicao;
-            return hogwarts;
+            Hogwarts escola = new Hogwarts();
+            escola.ano = this.ano;
+            escola.cargoEstudantil = this.cargoEstudantil;
+            escola.posicao = this.posicao;
+            return escola;
         }
     }
 }

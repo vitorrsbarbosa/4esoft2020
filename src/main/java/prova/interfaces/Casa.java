@@ -5,4 +5,5 @@ public interface Casa {
     void cantarHino();
     void nomearCargoEstudantil();
     void definirPosicaoDoJogador();
+    void definirAnoDoEstudante();
 }
