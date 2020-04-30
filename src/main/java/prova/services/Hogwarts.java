@@ -8,33 +8,23 @@ public class Hogwarts implements IHogwarts {
     private CargoEstudantil cargoEstudantil;
     private Posicao posicao;
     private Ano ano;
-
     private Hogwarts() {}
-
     @Override
-    public void estudar() {
-    }
-
+    public void estudar() { }
     @Override
-    public void cantarHino() {
-    }
-
+    public void cantarHino() { }
     @Override
-    public void nomearCargoEstudantil() {
-    }
-
+    public void nomearCargoEstudantil() { }
     public static class Builder {
         private CargoEstudantil cargoEstudantil;
         private Posicao posicao;
         private Ano ano;
         private Casa casa;
-
         public Builder nomearCargoDoEstudante(CargoEstudantil cargoEstudantil) {
             this.cargoEstudantil = cargoEstudantil;
             return this;
         }
         public Builder elegerPosicaoDoJogadorDeQuadribol(Posicao posicao) {
-
             this.posicao = posicao;
             return this;
         }
