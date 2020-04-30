@@ -1,0 +1,24 @@
+
+4
+java:S2176"Rename this class.(çÒÈúÿÿÿÿ8àùÄÙœ.
+ˆ
+java:S4165"mRemove this useless assignment; "cargoEstudantil" already holds the assigned value along all execution paths.(ôà½ıÿÿÿÿ
+J
+java:S1656"/Remove or correct this useless self-assignment.(äû•­ÿÿÿÿÿ
+A
+java:S1068"+Remove this unused "posicao" private field.(›‰ ò
+€
+java:S4165"eRemove this useless assignment; "posicao" already holds the assigned value along all execution paths.(äû•­ÿÿÿÿÿ
+J
+java:S1656"/Remove or correct this useless self-assignment.(ôà½ıÿÿÿÿ
+C
+java:S1068
+"-Remove this unused "isCalouro" private field.(„– Ê
+N
+java:S1068"3Remove this unused "cargoEstudantil" private field.(Ôó•øÿÿÿÿ
+B
+java:S1068	"'Remove this unused "ano" private field.(æ¨Ëöøÿÿÿÿ
+B
+java:S1068"'Remove this unused "ano" private field.(æ¨Ëöøÿÿÿÿ
+„
+java:S4165 "bRemove this useless assignment; "casa" already holds the assigned value along all execution paths.(×—ñÏşÿÿÿÿ8„‡¸Øœ.
