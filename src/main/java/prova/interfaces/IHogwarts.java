@@ -1,4 +1,4 @@
 package prova.interfaces;
 
-public interface IHogwarts extends Casa {
+public interface IHogwarts extends ICasa {
 }
