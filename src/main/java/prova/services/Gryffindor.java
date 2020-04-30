@@ -1,8 +1,8 @@
 package prova.services;
 
-import prova.interfaces.Escola;
+import prova.interfaces.Casa;
 
-public class Gryffindor implements Escola {
+public class Gryffindor implements Casa {
     @Override
     public void estudar() {
 
@@ -15,6 +15,11 @@ public class Gryffindor implements Escola {
 
     @Override
     public void nomearCargoEstudantil() {
+
+    }
+
+    @Override
+    public void definirPosicaoDoJogador() {
 
     }
 }

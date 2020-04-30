@@ -1,8 +1,9 @@
 package prova.services;
 
 import prova.enumerators.*;
+import prova.interfaces.Casa;
 
-public class Hogwarts {
+public class Hogwarts implements prova.interfaces.Hogwarts {
     private CargoEstudantil cargoEstudantil;
     private Posicao posicao;
     private Ano ano;
@@ -13,6 +14,7 @@ public class Hogwarts {
         private CargoEstudantil cargoEstudantil;
         private Posicao posicao;
         private Ano ano;
+        private Casa casa;
         private boolean isCalouro;
 
         public Builder nomearCardoDoEstudante() {
@@ -24,6 +26,10 @@ public class Hogwarts {
                 return null;
             }
             this.posicao = this.posicao;
+            return this;
+        }
+        public Builder definirCasa() {
+            this.casa = casa;
             return this;
         }
         public Hogwarts builder() {

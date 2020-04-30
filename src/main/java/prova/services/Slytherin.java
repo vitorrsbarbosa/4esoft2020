@@ -1,8 +1,8 @@
 package prova.services;
 
-import prova.interfaces.Escola;
+import prova.interfaces.Casa;
 
-public class Slytherin implements Escola {
+public class Slytherin implements Casa {
     @Override
     public void estudar() {
 
@@ -17,4 +17,10 @@ public class Slytherin implements Escola {
     public void nomearCargoEstudantil() {
 
     }
+
+    @Override
+    public void definirPosicaoDoJogador() {
+
+    }
+
 }

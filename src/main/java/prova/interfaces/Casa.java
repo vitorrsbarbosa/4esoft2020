@@ -1,7 +1,8 @@
 package prova.interfaces;
 
-public interface Escola {
+public interface Casa {
     void estudar();
     void cantarHino();
     void nomearCargoEstudantil();
+    void definirPosicaoDoJogador();
 }
