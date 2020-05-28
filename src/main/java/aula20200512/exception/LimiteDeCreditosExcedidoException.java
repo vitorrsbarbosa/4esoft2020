@@ -4,12 +4,12 @@ public class LimiteDeCreditosExcedidoException extends RuntimeException{
     
     private static final long serialVersionUID = -544886765160126539L;
 
-    LimiteDeCreditosExcedidoException() {
+    public LimiteDeCreditosExcedidoException() {
     }
-    LimiteDeCreditosExcedidoException(String message) {
+    public LimiteDeCreditosExcedidoException(String message) {
         super(message);
     }
-    LimiteDeCreditosExcedidoException(String message, Exception e) {
+    public LimiteDeCreditosExcedidoException(String message, Exception e) {
         super(message);
     }
 }

@@ -1,12 +1,21 @@
 package aula20200512.gerenciadorDeCompras;
 
-public class GerenciamentoDeCompras {
-    void efetuarCompra(String cpfCliente, Double valor) {
+import aula20200512.exception.LimiteDeCreditosExcedidoException;
 
+public class GerenciamentoDeCompras {
+    public GerenciamentoDeCompras(String string) {
+	}
+	public void efetuarCompra(String cpfCliente, Double valor) {
+        if(getSaldoLimiteDeCredito(cpfCliente) < valor) {
+            throw new LimiteDeCreditosExcedidoException("Impossível realizar compra.");
+        }
     }
-    void renovarLimiteDeCredito(String cpfCliente) {
+    public void renovarLimiteDeCredito(String cpfCliente) {
+        if(getSaldoLimiteDeCredito(cpfCliente) > ) {
+
+        }
     }
-    double getSaldoLimiteDeCredito(String cpfCliente) {
-        cpfCliente - 
+    public double getSaldoLimiteDeCredito(String cpfCliente) {
+        return cpfCliente;
     }
 }
