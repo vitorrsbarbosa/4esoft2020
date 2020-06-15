@@ -1,4 +1,4 @@
-package atividadeForumSegundoBimestreTest.access;
+package atividadeForumSegundoBimestre.access;
 
 public interface Livro {
     String getDataDeLancamento();

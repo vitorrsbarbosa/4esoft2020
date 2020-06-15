@@ -1,4 +1,4 @@
-package atividadeForumSegundoBimestreTest.exception;
+package atividadeForumSegundoBimestre.exception;
 
 public class LivroNotFoundException extends PreconditionFailedException {
 

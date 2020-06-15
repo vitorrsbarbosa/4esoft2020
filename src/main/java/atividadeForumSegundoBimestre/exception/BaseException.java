@@ -1,4 +1,4 @@
-package atividadeForumSegundoBimestreTest.exception;
+package atividadeForumSegundoBimestre.exception;
 
 public abstract class BaseException extends RuntimeException {
     public BaseException() {

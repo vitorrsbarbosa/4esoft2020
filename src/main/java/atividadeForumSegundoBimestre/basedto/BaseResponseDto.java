@@ -1,4 +1,4 @@
-package atividadeForumSegundoBimestreTest.basedto;
+package atividadeForumSegundoBimestre.basedto;
 
 import java.time.Clock;
 import java.time.LocalDateTime;

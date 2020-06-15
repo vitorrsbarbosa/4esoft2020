@@ -1,8 +1,8 @@
-package atividadeForumSegundoBimestreTest.controller;
+package atividadeForumSegundoBimestre.controller;
 
-import atividadeForumSegundoBimestreTest.basedto.BaseResponseDto;
-import atividadeForumSegundoBimestreTest.entity.Livro;
-import atividadeForumSegundoBimestreTest.service.LivroService;
+import atividadeForumSegundoBimestre.basedto.BaseResponseDto;
+import atividadeForumSegundoBimestre.entity.Livro;
+import atividadeForumSegundoBimestre.service.LivroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

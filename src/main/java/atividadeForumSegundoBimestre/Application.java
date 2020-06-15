@@ -1,4 +1,4 @@
-package atividadeForumSegundoBimestreTest;
+package atividadeForumSegundoBimestre;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

@@ -1,7 +1,7 @@
-package atividadeForumSegundoBimestreTest.exception;
+package atividadeForumSegundoBimestre.exception;
 
-import atividadeForumSegundoBimestreTest.basedto.BaseErrorResponseDto;
-import atividadeForumSegundoBimestreTest.basedto.BaseResponseDto;
+import atividadeForumSegundoBimestre.basedto.BaseErrorResponseDto;
+import atividadeForumSegundoBimestre.basedto.BaseResponseDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

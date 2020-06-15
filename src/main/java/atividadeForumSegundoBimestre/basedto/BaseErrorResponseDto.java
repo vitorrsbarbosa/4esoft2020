@@ -1,4 +1,4 @@
-package atividadeForumSegundoBimestreTest.basedto;
+package atividadeForumSegundoBimestre.basedto;
 
 public class BaseErrorResponseDto {
     private String message;

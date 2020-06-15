@@ -1,4 +1,4 @@
-package atividadeForumSegundoBimestreTest.exception;
+package atividadeForumSegundoBimestre.exception;
 
 public class PreconditionFailedException extends BaseException {
     public PreconditionFailedException() {

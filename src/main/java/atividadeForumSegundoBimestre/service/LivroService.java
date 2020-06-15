@@ -1,8 +1,8 @@
-package atividadeForumSegundoBimestreTest.service;
+package atividadeForumSegundoBimestre.service;
 
-import atividadeForumSegundoBimestreTest.entity.Livro;
-import atividadeForumSegundoBimestreTest.exception.LivroNotFoundException;
-import atividadeForumSegundoBimestreTest.repository.LivroRepository;
+import atividadeForumSegundoBimestre.entity.Livro;
+import atividadeForumSegundoBimestre.exception.LivroNotFoundException;
+import atividadeForumSegundoBimestre.repository.LivroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

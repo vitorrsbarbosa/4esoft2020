@@ -1,6 +1,6 @@
-package atividadeForumSegundoBimestreTest.entity;
+package atividadeForumSegundoBimestre.entity;
 
-import atividadeForumSegundoBimestreTest.access.Livro;
+import atividadeForumSegundoBimestre.access.Livro;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
