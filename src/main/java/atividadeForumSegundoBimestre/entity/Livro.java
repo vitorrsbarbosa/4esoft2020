@@ -12,16 +12,43 @@ public class Livro {
     private String autor;
     private String dataDeLancamento;
     private String genero;
+    private Boolean isReservado;
+    private Integer numeroDeCopias;
 
     public Livro() {
     }
-
-    public Livro(String titulo, String autor, Integer numeroDePaginas, String dataDeLancamento, String genero) {
+    public Livro(
+            String id,
+            String titulo,
+            String autor,
+            Integer numeroDePaginas,
+            String dataDeLancamento,
+            String genero,
+            Boolean isReservado, Integer numeroDeCopias) {
+        this.id = id;
         this.numeroDePaginas = numeroDePaginas;
         this.titulo = titulo;
         this.autor = autor;
         this.dataDeLancamento = dataDeLancamento;
         this.genero = genero;
+        this.isReservado = isReservado;
+        this.numeroDeCopias = numeroDeCopias;
+    }
+
+    public Livro(
+            String titulo,
+            String autor,
+            Integer numeroDePaginas,
+            String dataDeLancamento,
+            String genero,
+            Boolean isReservado, Integer numeroDeCopias) {
+        this.numeroDePaginas = numeroDePaginas;
+        this.titulo = titulo;
+        this.autor = autor;
+        this.dataDeLancamento = dataDeLancamento;
+        this.genero = genero;
+        this.isReservado = isReservado;
+        this.numeroDeCopias = numeroDeCopias;
     }
 
     public String getDataDeLancamento() {
@@ -71,5 +98,21 @@ public class Livro {
 
     public void setGenero(String genero) {
         this.genero = genero;
+    }
+
+    public Boolean getReservado() {
+        return isReservado;
+    }
+
+    public void setReservado(Boolean reservado) {
+        isReservado = reservado;
+    }
+
+    public Integer getNumeroDeCopias() {
+        return numeroDeCopias;
+    }
+
+    public void setNumeroDeCopias(Integer numeroDeCopias) {
+        this.numeroDeCopias = numeroDeCopias;
     }
 }

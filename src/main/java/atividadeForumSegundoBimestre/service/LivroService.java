@@ -20,10 +20,9 @@ public class LivroService {
         return repository.findAll();
     }
 
-    public Livro findById(String livroId) throws Throwable {
-        Livro livroEcontrado = (Livro) repository
+    public Livro findById(String livroId) {
+        return (Livro) repository
                 .findById(livroId).orElseThrow(LivroNotFoundException::new);
-        return livroEcontrado;
     }
 
     public Livro updateLivro(Livro livroAlterado) {
@@ -37,9 +36,19 @@ public class LivroService {
 
 
     public void createLivro(Livro livroACriar) {
-        if (repository.findById(livroACriar.getId()) == null) {
-            repository.save(livroACriar);
+        if (repository.findById(livroACriar.getId()).isPresent()) {
+            return;
         }
-        return;
+        repository.save(livroACriar);
+    }
+
+    public Livro findLivroByTitulo(String titulo) {
+        return repository.findByTitulo(titulo);
+    }
+
+    public void reservarLivro(Livro livroEncontrado) {
+        if(livroEncontrado.getReservado().equals(true))
+            return;
+        livroEncontrado.setReservado(true);
     }
 }

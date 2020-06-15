@@ -11,30 +11,37 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class LivroServiceTest {
 
     @Test
     void alterarTituloDoLivroTest() throws Throwable {
-        ArgumentCaptor<Livro> livroArgumentCaptor = ArgumentCaptor.forClass(Livro.class);
-        ArgumentCaptor<Biblioteca> bibliotecaArgumentCaptor = ArgumentCaptor.forClass(Biblioteca.class);
+        ArgumentCaptor.forClass(Livro.class);
+        ArgumentCaptor.forClass(Biblioteca.class);
+//        Given
         LivroRepository livroRepository = Mockito.mock(LivroRepository.class);
         BibliotecaRepository bibliotecaRepository = Mockito.mock(BibliotecaRepository.class);
         LivroService livroService = new LivroService(livroRepository);
-        BibliotecaService bibliotecaService = new BibliotecaService(bibliotecaRepository);
-
+        BibliotecaService bibliotecaService = new BibliotecaService(livroService, bibliotecaRepository);
+        Livro lordOfTheRings = new Livro(
+                "1",
+                "O Senhor dos Anéis: A Sociedade do Anel",
+                "J. R. R. Tolkien",
+                423,
+                "1954",
+                "Literatura Fantástica",
+                false,
+                20);
+//        When
         when(livroService.findById("1"))
-                .thenReturn(
-                        new Livro(
-                                "O Senhor dos Anéis: A Sociedade do Anel",
-                                "J. R. R. Tolkien",
-                                423,
-                                "1954",
-                                "Literatura fantástica"));
+                .thenReturn(lordOfTheRings);
+        bibliotecaService
+                .reservarLivroPorTitulo("O Senhor dos Anéis: A Sociedade do Anel");
+//        Then
+        assertThat(livroService.findById("1")
+                .getTitulo())
+                .isEqualTo("A Sociedade do Anel");
 
-        bibliotecaService.reservarLivroPorTitulo("O Senhor dos Anéis: A Sociedade do Anel");
-
-        assertThat(livroRepository.findById("1")).contains("A Sociedade do Anel");
     }
 }
