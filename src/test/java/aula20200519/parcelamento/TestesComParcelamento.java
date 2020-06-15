@@ -3,9 +3,10 @@ package aula20200519.parcelamento;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.List;
 
+import aula20200519.Parcela;
+import aula20200519.Parcelamento;
 import org.junit.jupiter.api.Test;
 
 class TestesComParcelamento {
