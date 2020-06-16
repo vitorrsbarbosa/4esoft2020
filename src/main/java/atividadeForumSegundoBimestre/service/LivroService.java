@@ -1,8 +1,11 @@
 package atividadeForumSegundoBimestre.service;
 
 import atividadeForumSegundoBimestre.entity.Livro;
+import atividadeForumSegundoBimestre.exception.LivroInvalidoException;
 import atividadeForumSegundoBimestre.exception.LivroNotFoundException;
+import atividadeForumSegundoBimestre.exception.LivroRepetidoException;
 import atividadeForumSegundoBimestre.repository.LivroRepository;
+import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,34 +24,38 @@ public class LivroService {
     }
 
     public Livro findById(String livroId) {
-        return (Livro) repository
-                .findById(livroId).orElseThrow(LivroNotFoundException::new);
+        return repository.findById(livroId).orElseThrow(LivroNotFoundException::new);
     }
 
     public Livro updateLivro(Livro livroAlterado) {
+        validateLivro(livroAlterado);
         repository.save(livroAlterado);
         return livroAlterado;
     }
 
-    public void deleteLivroById(String livroId) {
+    public Livro deleteLivroById(String livroId) {
+        var livroDeletado = repository.findById(livroId).orElseThrow(LivroNotFoundException::new);
         repository.deleteById(livroId);
+        return livroDeletado;
     }
 
+    public Livro createLivro(Livro livroACriar) {
+        validateLivro(livroACriar);
+        return repository.save(livroACriar);
+    }
 
-    public void createLivro(Livro livroACriar) {
-        if (repository.findById(livroACriar.getId()).isPresent()) {
-            return;
+    private void validateLivro(Livro livroACriar) {
+        if(repository.findById(livroACriar.getId()).isPresent()) {
+            throw new LivroRepetidoException();
         }
-        repository.save(livroACriar);
-    }
-
-    public Livro findLivroByTitulo(String titulo) {
-        return repository.findByTitulo(titulo);
-    }
-
-    public void reservarLivro(Livro livroEncontrado) {
-        if(livroEncontrado.getReservado().equals(true))
-            return;
-        livroEncontrado.setReservado(true);
+        if (livroACriar.getTitulo().isEmpty()) {
+            throw new LivroInvalidoException();
+        }
+        if(livroACriar.getAutor().isEmpty()) {
+            throw new LivroInvalidoException();
+        }
+        if (livroACriar.getNumeroDePaginas().equals(0)) {
+            throw new LivroInvalidoException();
+        }
     }
 }
