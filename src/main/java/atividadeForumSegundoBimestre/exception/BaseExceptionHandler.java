@@ -2,6 +2,7 @@ package atividadeForumSegundoBimestre.exception;
 
 import atividadeForumSegundoBimestre.basedto.BaseErrorResponseDto;
 import atividadeForumSegundoBimestre.basedto.BaseResponseDto;
+import mySpringBootApp.livro.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -18,9 +19,16 @@ public class BaseExceptionHandler {
     }
 
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    @ExceptionHandler(Exception.class)
+    @ExceptionHandler(NotFoundException.class)
     @ResponseBody
     public BaseResponseDto<BaseErrorResponseDto> handleNotFoundException(Exception exception) {
         return new BaseResponseDto<>(new BaseErrorResponseDto("Não foi possível encontrar o livro requisitado"));
+    }
+
+    @ResponseStatus(HttpStatus.PRECONDITION_FAILED)
+    @ExceptionHandler(PreconditionFailedException.class)
+    @ResponseBody
+    public BaseResponseDto<BaseErrorResponseDto> handlePreconditionFailedException(Exception exception) {
+        return new BaseResponseDto<>(new BaseErrorResponseDto("Faltam informações na requisição."));
     }
 }

@@ -16,7 +16,7 @@ import static org.mockito.Mockito.*;
 public class LivroServiceTest {
 
     @Test
-    void alterarTituloDoLivroTest() throws Throwable {
+    void reservarLivroTest() {
         ArgumentCaptor.forClass(Livro.class);
         ArgumentCaptor.forClass(Biblioteca.class);
 //        Given
@@ -34,14 +34,16 @@ public class LivroServiceTest {
                 false,
                 20);
 //        When
-        when(livroService.findById("1"))
+        when(livroService.findById("12"))
                 .thenReturn(lordOfTheRings);
         bibliotecaService
                 .reservarLivroPorTitulo("O Senhor dos Anéis: A Sociedade do Anel");
 //        Then
         assertThat(livroService.findById("1")
                 .getTitulo())
-                .isEqualTo("A Sociedade do Anel");
-
+                .contains("A Sociedade do Anel");
+        assertThat(livroService.findLivroByTitulo("O Senhor dos Anéis: A Sociedade do Anel")
+                .getReservado())
+                .isTrue();
     }
 }

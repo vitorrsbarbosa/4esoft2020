@@ -21,8 +21,14 @@ public class LivroService {
     }
 
     public Livro findById(String livroId) {
-        return (Livro) repository
-                .findById(livroId).orElseThrow(LivroNotFoundException::new);
+        try {
+             if (repository.findById(livroId).isPresent()) {
+                 return repository.findById(livroId).get();
+             }
+        } catch (LivroNotFoundException e) {
+            throw new LivroNotFoundException();
+        }
+        return null;
     }
 
     public Livro updateLivro(Livro livroAlterado) {
