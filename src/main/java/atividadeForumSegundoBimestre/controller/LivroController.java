@@ -1,15 +1,15 @@
 package atividadeForumSegundoBimestre.controller;
 
-import atividadeForumSegundoBimestre.basedto.BaseResponseDto;
 import atividadeForumSegundoBimestre.entity.Livro;
 import atividadeForumSegundoBimestre.service.LivroService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("api/biblioteca")
+@RequestMapping("api/livros")
 public class LivroController {
     private LivroService service;
 
@@ -18,41 +18,34 @@ public class LivroController {
         this.service = service;
     }
 
-
     @GetMapping
-    public BaseResponseDto<List<Livro>> getAllLivros() {
-        return new BaseResponseDto<>(service.findAllLivros());
+    public List<Livro> getAllLivros() {
+        return service.findAllLivros();
     }
 
-    @GetMapping("livros/{livroId}")
-    public BaseResponseDto<Livro> getOneById(@PathVariable("livroId") String livroId) throws Throwable {
-        return new BaseResponseDto<>(service.findById(livroId));
+    @GetMapping("{livroId}")
+    @ResponseStatus(HttpStatus.OK)
+    public Livro getOneById(@PathVariable("livroId") String livroId) {
+        return service.findById(livroId);
     }
 
     @PutMapping("livros/{livroId}")
-    public BaseResponseDto<Livro> putLivro(
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public Livro putLivro(
             @PathVariable("livroId") String livroId,
             @RequestBody Livro livroAlterado) {
-        if (livroId.equals(livroAlterado.getId())) {
-            return new BaseResponseDto<>(service.updateLivro(livroAlterado));
-        }
-        return null;
+        return service.updateLivro(livroAlterado);
     }
-    @PostMapping("livros")
-    public BaseResponseDto<Livro> postLivro(@RequestBody Livro livro) {
-        service.createLivro(livro);
-        return new BaseResponseDto<>();
 
+    @PostMapping("livros")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Livro postLivro(@RequestBody Livro livro) {
+        return service.createLivro(livro);
     }
 
     @DeleteMapping("livros/{livroId}")
-    public BaseResponseDto<Livro> deleteLivro(@PathVariable("livroId") String livroId) throws Throwable {
-        if (service.findById(livroId).getId().equals(livroId)) {
-            service.deleteLivroById(livroId);
-            return new BaseResponseDto<>();
-        }
-        return null;
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public Livro deleteLivro(@PathVariable("livroId") String livroId) throws Throwable {
+        return service.deleteLivroById(livroId);
     }
-
-
 }
