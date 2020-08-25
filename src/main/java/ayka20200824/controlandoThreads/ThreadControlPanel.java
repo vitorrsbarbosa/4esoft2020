@@ -44,6 +44,10 @@ public class ThreadControlPanel extends JPanel {
 			this.button.setText("Restart");
 			this.status = ThreadStatus.PAUSED;
 			break;
+		case DONE:
+			this.button.setText("Done");
+			this.status = ThreadStatus.DONE;
+			break;
 		default:
 			break;
 		}
@@ -65,6 +69,9 @@ public class ThreadControlPanel extends JPanel {
 						Thread.sleep(100);
 						progressBar.setValue(i);
 						progressBar.revalidate();
+						if(progressBar.isBorderPainted()) {
+							status = ThreadStatus.DONE;
+						}
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
@@ -74,7 +81,7 @@ public class ThreadControlPanel extends JPanel {
 	}
 
 	private static enum ThreadStatus {
-		RUNNING, PAUSED, NEW
+		RUNNING, PAUSED, NEW, DONE,
 	}
 
 }
