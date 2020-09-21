@@ -1,6 +1,6 @@
-package atividadeForumSegundoBimestre.repository;
+package atividadeForum.segundoBimestre.repository;
 
-import atividadeForumSegundoBimestre.entity.Livro;
+import atividadeForum.segundoBimestre.entity.Livro;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

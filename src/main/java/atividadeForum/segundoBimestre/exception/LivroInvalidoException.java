@@ -1,4 +1,4 @@
-package atividadeForumSegundoBimestre.exception;
+package atividadeForum.segundoBimestre.exception;
 
 public class LivroInvalidoException extends RuntimeException {
     public LivroInvalidoException() {

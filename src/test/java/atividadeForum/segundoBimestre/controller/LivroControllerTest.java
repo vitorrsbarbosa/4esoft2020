@@ -1,9 +1,9 @@
-package atividadeForumSegundoBimestre.controller;
+package atividadeForum.segundoBimestre.controller;
 
-import atividadeForumSegundoBimestre.entity.Livro;
-import atividadeForumSegundoBimestre.exception.LivroInvalidoException;
-import atividadeForumSegundoBimestre.exception.LivroNotFoundException;
-import atividadeForumSegundoBimestre.service.LivroService;
+import atividadeForum.segundoBimestre.entity.Livro;
+import atividadeForum.segundoBimestre.exception.LivroInvalidoException;
+import atividadeForum.segundoBimestre.exception.LivroNotFoundException;
+import atividadeForum.segundoBimestre.service.LivroService;
 import lombok.var;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,9 +53,9 @@ public class LivroControllerTest {
             add(new Livro("O retorno do rei", 90, "JRRT"));
         }};
 //        When
-        when(service.findAllLivros()).thenReturn(livros);
+        when(this.service.findAllLivros()).thenReturn(livros);
 //        Then
-        mockMvc.perform(get("/api/livros"))
+        this.mockMvc.perform(get("/api/livros"))
                 .andExpect((ResultMatcher) jsonPath("$").isArray())
                 .andExpect((ResultMatcher) jsonPath("$", hasSize(3)))
                 .andExpect((ResultMatcher) jsonPath("$.[0].id").isNotEmpty())
@@ -74,9 +74,9 @@ public class LivroControllerTest {
 //        Given
         Livro existente = new Livro("Teste1", 10, "Autor1");
 //        When
-        when(service.findById(anyString())).thenReturn(existente);
+        when(this.service.findById(anyString())).thenReturn(existente);
 //        Then
-        mockMvc.perform(get("/api/livros/afe5fddd-f774-4b9d-8914-e3d795c71895"))
+        this.mockMvc.perform(get("/api/livros/afe5fddd-f774-4b9d-8914-e3d795c71895"))
                 .andExpect((ResultMatcher) jsonPath("$.title").value("Teste1"))
                 .andExpect((ResultMatcher) jsonPath("$.pageNumber").value(10))
                 .andExpect((ResultMatcher) jsonPath("$.author").value("Autor1"))
@@ -86,9 +86,9 @@ public class LivroControllerTest {
     @Test
     public void teste_get_vazio() throws Exception{
 //        When
-        when(service.findById(anyString())).thenThrow(LivroNotFoundException.class);
+        when(this.service.findById(anyString())).thenThrow(LivroNotFoundException.class);
 //        Then
-        mockMvc.perform(get("/api/livros/123123"))
+        this.mockMvc.perform(get("/api/livros/123123"))
                 .andExpect(status().isNotFound());
     }
 
@@ -98,11 +98,11 @@ public class LivroControllerTest {
         UUID uuid = UUID.randomUUID();
         String number = String.valueOf(uuid);
         Livro novo = new Livro("Teste1", 10, "Autor1");
-        var object = objectMapper.writeValueAsString(novo);
+        var object = this.objectMapper.writeValueAsString(novo);
 //        When
-        when(service.createLivro(novo)).thenReturn(novo);
+        when(this.service.createLivro(novo)).thenReturn(novo);
 //        Then
-        mockMvc.perform(post("/api/livros")
+        this.mockMvc.perform(post("/api/livros")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(object))
                 .andExpect(status().isCreated())
@@ -113,11 +113,11 @@ public class LivroControllerTest {
     public void teste_post_dadosInvalidos() throws Exception{
 //        Given
         Livro novo = new Livro("Teste1", 0, "Autor1");
-        var object = objectMapper.writeValueAsString(novo);
+        var object = this.objectMapper.writeValueAsString(novo);
 //        When
-        when(service.createLivro(any())).thenThrow(LivroInvalidoException.class);
+        when(this.service.createLivro(any())).thenThrow(LivroInvalidoException.class);
 //        Then
-        mockMvc.perform(post("/api/livros")
+        this.mockMvc.perform(post("/api/livros")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(object))
                 .andExpect(status().isUnprocessableEntity());
@@ -130,11 +130,11 @@ public class LivroControllerTest {
         String livroId = String.valueOf(uuid);
         Livro novo = new Livro("Teste1", 0, "Autor1");
         novo.setId(livroId);
-        var object = objectMapper.writeValueAsString(novo);
+        var object = this.objectMapper.writeValueAsString(novo);
 //        When
-        when(service.updateLivro(any())).thenThrow(LivroInvalidoException.class);
+        when(this.service.updateLivro(any())).thenThrow(LivroInvalidoException.class);
 //        Then
-        mockMvc.perform(put("/api/livros/" + livroId)
+        this.mockMvc.perform(put("/api/livros/" + livroId)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(object))
                 .andExpect(status().isUnprocessableEntity());
@@ -149,11 +149,11 @@ public class LivroControllerTest {
         String id2 = String.valueOf(uuid2);
         Livro novo = new Livro("Abublé", 0, "Taz");
         novo.setId(id1);
-        var object = objectMapper.writeValueAsString(novo);
+        var object = this.objectMapper.writeValueAsString(novo);
 //        When
-        when(service.updateLivro(any())).thenThrow(LivroInvalidoException.class);
+        when(this.service.updateLivro(any())).thenThrow(LivroInvalidoException.class);
 //        Then
-        mockMvc.perform(put("/api/livros/" + id2)
+        this.mockMvc.perform(put("/api/livros/" + id2)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(object))
                 .andExpect(status().isPreconditionFailed());
@@ -166,11 +166,11 @@ public class LivroControllerTest {
         String id = String.valueOf(uuid);
         Livro novo = new Livro("Teste1", 10, "Autor1");
         novo.setId(id);
-        var object = objectMapper.writeValueAsString(novo);
+        var object = this.objectMapper.writeValueAsString(novo);
 //        When
-        when(service.updateLivro(any())).thenReturn(novo);
+        when(this.service.updateLivro(any())).thenReturn(novo);
 //        Then
-        mockMvc.perform(put("/api/livros/" + id)
+        this.mockMvc.perform(put("/api/livros/" + id)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(object))
                 .andExpect(status().isAccepted())
@@ -183,7 +183,7 @@ public class LivroControllerTest {
         UUID uuid = UUID.randomUUID();
         String id = String.valueOf(uuid);
 //        Then
-        mockMvc.perform(delete("/api/livros/" + id))
+        this.mockMvc.perform(delete("/api/livros/" + id))
                 .andExpect(status().isAccepted());
     }
 
@@ -193,9 +193,9 @@ public class LivroControllerTest {
         UUID uuid = UUID.randomUUID();
         String id = String.valueOf(uuid);
 //        When
-        when(service.deleteLivroById(any())).thenThrow(LivroNotFoundException.class);
+        when(this.service.deleteLivroById(any())).thenThrow(LivroNotFoundException.class);
 //        Then
-        mockMvc.perform(delete("/api/livros/" + id))
+        this.mockMvc.perform(delete("/api/livros/" + id))
                 .andExpect(status().isNotFound());
     }
 

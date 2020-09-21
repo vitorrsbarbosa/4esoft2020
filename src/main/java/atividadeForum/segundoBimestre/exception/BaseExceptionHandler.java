@@ -1,7 +1,7 @@
-package atividadeForumSegundoBimestre.exception;
+package atividadeForum.segundoBimestre.exception;
 
-import atividadeForumSegundoBimestre.basedto.BaseErrorResponseDto;
-import atividadeForumSegundoBimestre.basedto.BaseResponseDto;
+import atividadeForum.segundoBimestre.base.dto.BaseErrorResponseDto;
+import atividadeForum.segundoBimestre.base.dto.BaseResponseDto;
 import mySpringBootApp.livro.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -26,7 +26,6 @@ public class BaseExceptionHandler {
     }
 
     @ResponseStatus(HttpStatus.PRECONDITION_FAILED)
-    @ExceptionHandler(PreconditionFailedException.class)
     @ResponseBody
     public BaseResponseDto<BaseErrorResponseDto> handlePreconditionFailedException(Exception exception) {
         return new BaseResponseDto<>(new BaseErrorResponseDto("Faltam informações na requisição."));

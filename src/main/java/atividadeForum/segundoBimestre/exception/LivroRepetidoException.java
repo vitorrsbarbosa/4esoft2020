@@ -1,4 +1,4 @@
-package atividadeForumSegundoBimestre.exception;
+package atividadeForum.segundoBimestre.exception;
 
 public class LivroRepetidoException extends RuntimeException {
     public LivroRepetidoException() {

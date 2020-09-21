@@ -1,11 +1,11 @@
-package atividadeForumSegundoBimestre.Service;
+package atividadeForum.segundoBimestre.Service;
 
+import atividadeForum.segundoBimestre.entity.Biblioteca;
+import atividadeForum.segundoBimestre.entity.Livro;
+import atividadeForum.segundoBimestre.service.LivroService;
 import atividadeForumSegundoBimestre.service.BibliotecaService;
-import atividadeForumSegundoBimestre.entity.Biblioteca;
-import atividadeForumSegundoBimestre.entity.Livro;
 import atividadeForumSegundoBimestre.repository.BibliotecaRepository;
-import atividadeForumSegundoBimestre.repository.LivroRepository;
-import atividadeForumSegundoBimestre.service.LivroService;
+import atividadeForum.segundoBimestre.repository.LivroRepository;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;

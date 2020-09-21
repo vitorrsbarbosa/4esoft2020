@@ -1,10 +1,10 @@
-package atividadeForumSegundoBimestre.service;
+package atividadeForum.segundoBimestre.service;
 
-import atividadeForumSegundoBimestre.entity.Livro;
-import atividadeForumSegundoBimestre.exception.LivroInvalidoException;
-import atividadeForumSegundoBimestre.exception.LivroNotFoundException;
-import atividadeForumSegundoBimestre.exception.LivroRepetidoException;
-import atividadeForumSegundoBimestre.repository.LivroRepository;
+import atividadeForum.segundoBimestre.entity.Livro;
+import atividadeForum.segundoBimestre.exception.LivroInvalidoException;
+import atividadeForum.segundoBimestre.exception.LivroNotFoundException;
+import atividadeForum.segundoBimestre.exception.LivroRepetidoException;
+import atividadeForum.segundoBimestre.repository.LivroRepository;
 import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,32 +20,32 @@ public class LivroService {
     }
 
     public List<Livro> findAllLivros() {
-        return repository.findAll();
+        return this.repository.findAll();
     }
 
     public Livro findById(String livroId) {
-        return repository.findById(livroId).orElseThrow(LivroNotFoundException::new);
+        return this.repository.findById(livroId).orElseThrow(LivroNotFoundException::new);
     }
 
     public Livro updateLivro(Livro livroAlterado) {
         validateLivro(livroAlterado);
-        repository.save(livroAlterado);
+        this.repository.save(livroAlterado);
         return livroAlterado;
     }
 
     public Livro deleteLivroById(String livroId) {
-        var livroDeletado = repository.findById(livroId).orElseThrow(LivroNotFoundException::new);
-        repository.deleteById(livroId);
+        var livroDeletado = this.repository.findById(livroId).orElseThrow(LivroNotFoundException::new);
+        this.repository.deleteById(livroId);
         return livroDeletado;
     }
 
     public Livro createLivro(Livro livroACriar) {
         validateLivro(livroACriar);
-        return repository.save(livroACriar);
+        return this.repository.save(livroACriar);
     }
 
     private void validateLivro(Livro livroACriar) {
-        if(repository.findById(livroACriar.getId()).isPresent()) {
+        if(this.repository.findById(livroACriar.getId()).isPresent()) {
             throw new LivroRepetidoException();
         }
         if (livroACriar.getTitulo().isEmpty()) {

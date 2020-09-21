@@ -1,4 +1,4 @@
-package atividadeForumSegundoBimestre.entity;
+package atividadeForum.segundoBimestre.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
