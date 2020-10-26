@@ -15,6 +15,10 @@ public class Livro {
     private Integer numeroDePaginas;
     private String titulo;
     private String autor;
+    private Boolean reserva = false;
+    private String anoLancamento;
+    private String generoLiterario;
+    private int quantidadeDisponivel;
 
     public Livro() {}
 
@@ -22,5 +26,16 @@ public class Livro {
         this.titulo = titulo;
         this.numeroDePaginas = numeroDePaginas;
         this.autor = autor;
+    }
+
+	public Livro(String titulo, String autor, int numeroDePaginas, String anoLancamento, String generoLiterario, Boolean reservado,
+			int quantidadeDisponivel) {
+                this.titulo = titulo;
+                this.autor = autor;
+                this.numeroDePaginas = numeroDePaginas;
+                this.anoLancamento = anoLancamento;
+                this.generoLiterario = generoLiterario;
+                this.reserva = reservado;
+                this.quantidadeDisponivel = quantidadeDisponivel;
     }
 }

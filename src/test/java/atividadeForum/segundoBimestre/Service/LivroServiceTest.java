@@ -3,8 +3,8 @@ package atividadeForum.segundoBimestre.Service;
 import atividadeForum.segundoBimestre.entity.Biblioteca;
 import atividadeForum.segundoBimestre.entity.Livro;
 import atividadeForum.segundoBimestre.service.LivroService;
-import atividadeForumSegundoBimestre.service.BibliotecaService;
-import atividadeForumSegundoBimestre.repository.BibliotecaRepository;
+import atividadeForum.segundoBimestre.service.BibliotecaService;
+import atividadeForum.segundoBimestre.repository.BibliotecaRepository;
 import atividadeForum.segundoBimestre.repository.LivroRepository;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
@@ -25,7 +25,6 @@ public class LivroServiceTest {
         LivroService livroService = new LivroService(livroRepository);
         BibliotecaService bibliotecaService = new BibliotecaService(livroService, bibliotecaRepository);
         Livro lordOfTheRings = new Livro(
-                "1",
                 "O Senhor dos Anéis: A Sociedade do Anel",
                 "J. R. R. Tolkien",
                 423,
@@ -34,16 +33,16 @@ public class LivroServiceTest {
                 false,
                 20);
 //        When
-        when(livroService.findById("12"))
+        when(bibliotecaService.findLivroByTitulo("O Senhor dos Anéis: A Sociedade do Anel"))
                 .thenReturn(lordOfTheRings);
-        bibliotecaService
-                .reservarLivroPorTitulo("O Senhor dos Anéis: A Sociedade do Anel");
+        when(bibliotecaService
+                .reservarLivroPorTitulo("O Senhor dos Anéis: A Sociedade do Anel")).thenReturn(true);
 //        Then
         assertThat(livroService.findById("1")
                 .getTitulo())
                 .contains("A Sociedade do Anel");
-        assertThat(livroService.findLivroByTitulo("O Senhor dos Anéis: A Sociedade do Anel")
-                .getReservado())
+        assertThat(bibliotecaService.findLivroByTitulo("O Senhor dos Anéis: A Sociedade do Anel")
+                .getReserva())
                 .isTrue();
     }
 }

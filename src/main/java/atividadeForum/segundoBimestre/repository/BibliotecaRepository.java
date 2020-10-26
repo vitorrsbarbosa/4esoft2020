@@ -1,10 +1,10 @@
 package atividadeForum.segundoBimestre.repository;
 
-import atividadeForum.segundoBimestre.entity.Livro;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import atividadeForum.segundoBimestre.entity.Livro;
+
 @Repository
-public interface LivroRepository extends JpaRepository<Livro, String> {	
-	Livro findByTitulo(String titulo);
+public interface BibliotecaRepository extends JpaRepository<Livro, String> {
 }
