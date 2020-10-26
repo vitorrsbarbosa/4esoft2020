@@ -2,7 +2,7 @@ package aula20201019.ag;
 
 import java.util.Random;
 
-public class AppOláMundoRandômico {
+public class AppOlaMundoRandomico {
 
     //"Hello World";
     //"Hd23X  orLd"  fitness=4
